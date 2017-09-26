@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="tab">
-      <router-link tag="div" class="tab-item" to="/remen">
+      <router-link tag="div" class="tab-nav" to="/remen">
         <span class="tab-link">热门</span>
       </router-link>
-      <router-link tag="div" class="tab-item" to="/dongtai">
+      <router-link tag="div" class="tab-nav" to="/dongtai">
         <span class="tab-link">动态</span>
       </router-link>
-      <router-link tag="div" class="tab-item" to="/faxian">
+      <router-link tag="div" class="tab-nav" to="/faxian">
         <span class="tab-link">发现</span>
       </router-link>
     </div>
@@ -33,7 +33,7 @@ export default {
     height: 0.7rem;
     font-size: 0.22rem;
     box-sizing: border-box;
-    .tab-item {
+    .tab-nav {
       display: flex;
       justify-content: center;
       align-items: center;
