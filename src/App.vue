@@ -21,5 +21,7 @@
 </script>
 
 <style src="./style/reset.scss" lang="scss">
-
+  #app{
+    position: relative;
+  }
 </style>

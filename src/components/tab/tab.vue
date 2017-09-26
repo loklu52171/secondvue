@@ -1,4 +1,5 @@
 <template>
+<div class="container">
   <div class="tab">
     <router-link tag="div" class="tab-item" to="/home">
       <span class="tab-link">首页</span>
@@ -13,6 +14,7 @@
       <span class="tab-link">个人</span>
     </router-link>
   </div>
+</div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -20,26 +22,31 @@
 </script>
 
 <style scoped lang="scss">
-
-  .tab{
-    display: flex;
-    height: 0.44rem;
-    line-height: 0.44rem;
-    font-size: 0.18rem;
-    .tab-item{
-      flex: 1;
-      text-align: center;
-      .tab-link{
-        padding-bottom: 0.05rem;
-        color: yellow;
-      } 
-      &.router-link-active{
+  .container{
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    .tab{
+      display: flex;
+      height: 0.44rem;
+      line-height: 0.44rem;
+      font-size: 0.18rem;
+      .tab-item{
+        flex: 1;
+        text-align: center;
         .tab-link{
-          color:red;
-          border-bottom: 2px solid red;
+          padding-bottom: 0.05rem;
+          color: yellow;
+        } 
+        &.router-link-active{
+          .tab-link{
+            color:red;
+            border-bottom: 2px solid red;
+          }
         }
-      }
-    }  
+      }  
+    }
   }
     
 </style>
