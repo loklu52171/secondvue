@@ -16,6 +16,20 @@
             </slider>
           </div>
         </div>
+        <div class="discList-wrapper">
+          <h1 class="list-title">热门歌曲推荐</h1>
+          <ul>
+            <li class="disc-list" v-for="item in DiscListData">
+              <div class="list_left">
+                <img :src="item.imgurl" alt="">
+              </div>
+              <div class="list_right">
+                <h2 class="list_right_title" v-html="item.dissname"></h2>
+                <p class="list_right_text" v-html="item.creator.name"></p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="tab-listSecond" v-if="currentIndex===1">
         2222
@@ -37,12 +51,13 @@
 import SWitches from 'src/base/switches/switches'
 import Slider from 'src/base/slider/slider'
 import { ERR_OK } from 'src/components/api/config'
-import { getSliderData } from 'src/components/api/home'
+import { getSliderData, getDiscList } from 'src/components/api/home'
 
 export default {
   data() {
     return {
       sliderData: [],
+      DiscListData: [],
       currentIndex: 0,
       switches: [
         { name: '热点' },
@@ -54,13 +69,20 @@ export default {
   },
   created() {
     this._getSliderData()
+    this._getDiscList()
   },
   methods: {
     _getSliderData() {
       getSliderData().then((res) => {
         if (res.code === ERR_OK) {
           this.sliderData = res.data.slider
-          console.log(this.sliderData)
+        }
+      })
+    },
+    _getDiscList() {
+      getDiscList().then((res) => {
+        if (res.code === ERR_OK) {
+          this.DiscListData = res.data.list
         }
       })
     },
@@ -90,6 +112,7 @@ export default {
     height: 0.7rem;
     font-size: 0.22rem;
     box-sizing: border-box;
+    margin-bottom: 0.06rem;
     .home-tab-nav {
       display: flex;
       text-align: center;
@@ -103,18 +126,18 @@ export default {
       }
     }
   }
-  .tab-list{
+  .tab-list {
     min-height: 0.01rem;
-    .tab-listOne{
+    .tab-listOne {
       height: 100%;
       overflow: hidden;
-      .slider-wrapper{
+      .slider-wrapper {
         position: relative;
         width: 100%;
         height: 0;
         padding-top: 40%;
         overflow: hidden;
-        .slider-content{
+        .slider-content {
           position: absolute;
           top: 0;
           left: 0;
@@ -122,16 +145,50 @@ export default {
           height: 100%;
         }
       }
+      .discList-wrapper{
+        .list-title{
+          margin-bottom: 0.2rem;
+          background-color: #eee;
+          font-size: 0.24rem;
+          height: 0.7rem;
+          line-height: 0.7rem;
+          letter-spacing: 0.08rem;
+          text-align: center;
+        }
+        .disc-list{
+          display: flex;
+          align-items: center;
+          padding: 0 0 0 0.4rem;
+          box-sizing: border-box;
+          .list_left{
+            margin-right: 0.24rem;
+            img{
+              width: 0.9rem;
+              height: 0.9rem;
+            }
+          }
+          .list_right{
+            display: flex;
+            flex-direction: column;
+            .list_right_title{
+              font-size: 0.2rem;
+            }
+            .list_right_text{
+              font-size: 0.2rem;
+            }
+          }
+        }
+      }
     }
-    .tab-listSecond{
+    .tab-listSecond {
       font-size: 0.2rem;
       color: green;
     }
-    .tab-listThree{
+    .tab-listThree {
       font-size: 0.2rem;
       color: green;
     }
-    .tab-listFour{
+    .tab-listFour {
       font-size: 0.2rem;
       color: green;
     }

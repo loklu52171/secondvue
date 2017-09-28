@@ -181,29 +181,29 @@
           width: 100%;
         }   
       }
+    }
     .dots{
       position: absolute;
       right: 0;
       left: 0;
-      bottom: 12px;
-      transform: translateZ(1px);
+      bottom: 0.12rem;
+      transform: translateZ(0.01rem);
       text-align: center;
       font-size: 0;
       .dot{
         display: inline-block;
-        margin: 0 4px;
-        width: 8px;
-        height: 8px;
+        margin: 0 0.08rem;
+        width: 0.18rem;
+        height: 0.12rem;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.5);
         &.active{
-          width: 20px;
-          border-radius: 5px;
+          width: 0.26rem;
+          border-radius: 0.05rem;
           background: rgba(255, 255, 255, 0.8);
         }
       }     
     } 
-    }
   }
     
 </style>
