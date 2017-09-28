@@ -1,15 +1,21 @@
 <template>
   <div class="container">
-    <div class="tab">
-      <router-link tag="div" class="tab-nav" to="/remen">
-        <span class="tab-link">热门</span>
-      </router-link>
-      <router-link tag="div" class="tab-nav" to="/dongtai">
-        <span class="tab-link">动态</span>
-      </router-link>
-      <router-link tag="div" class="tab-nav" to="/faxian">
-        <span class="tab-link">发现</span>
-      </router-link>
+    <div class="home-tab">
+      <s-witches :switches="switches" :currentIndex="currentIndex" @switch="switchItem"></s-witches>
+    </div>
+    <div class="tab-list">
+      <div class="tab-listOne" v-if="currentIndex===0">
+        1111
+      </div>
+      <div class="tab-listSecond" v-if="currentIndex===1">
+        2222
+      </div>
+      <div class="tab-listThree" v-if="currentIndex===2">
+        3333
+      </div>
+      <div class="tab-listFour" v-if="currentIndex===3">
+        4444
+      </div>
     </div>
     <keep-alive>
       <router-view></router-view>
@@ -18,18 +24,49 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { getKuaiList } from '../api/home'
+import SWitches from 'src/base/switches/switches'
+import { ERR_OK } from 'src/components/api/config'
+import { getSliderData } from 'src/components/api/home'
 
 export default {
-  created () {
-    this._getKuaiList()
+  data() {
+    return {
+      sliderData: [],
+      currentIndex: 0,
+      switches: [
+        { name: '热点' },
+        { name: '新闻' },
+        { name: '发现' },
+        { name: '社会' }
+      ]
+    }
+  },
+  created() {
+    this._getSliderData()
   },
   methods: {
-    _getKuaiList () {
-      getKuaiList().then((res) => {
-        console.log(res)
+    _getSliderData() {
+      getSliderData().then((res) => {
+        if (res.code === ERR_OK) {
+          this.sliderData = res.data.slider
+          console.log(this.sliderData)
+        }
       })
+    },
+    loadImage() {
+      if (!this.checkloaded) {
+        this.checkloaded = true
+        setTimeout(() => {
+          this.$refs.scroll.refresh()
+        }, 20)
+      }
+    },
+    switchItem(index) {
+      this.currentIndex = index
     }
+  },
+  components: {
+    SWitches
   }
 }
 </script>
@@ -37,25 +74,28 @@ export default {
 <style lang="scss">
 .container {
   overflow: hidden;
-  .tab {
-    display: flex;
+  .home-tab {
     height: 0.7rem;
     font-size: 0.22rem;
     box-sizing: border-box;
-    .tab-nav {
+    .home-tab-nav {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
       text-align: center;
-      .tab-link {
+      height: 0.7rem;
+      line-height: 0.7rem;
+      .home-tab-link {
         padding-bottom: 0.05rem;
+        flex: 1;
         color: black;
         font-size: 0.24rem;
       }
-      &.router-link-active {
-        border-bottom: 0.02rem solid blue;
-      }
+    }
+  }
+  .tab-list{
+    min-height: 0.01rem;
+    .tab-listOne,.tab-listSecond,.tab-listThree,.tab-listFour{
+      font-size: 0.2rem;
+      color: green;
     }
   }
 }
