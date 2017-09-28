@@ -18,10 +18,19 @@
 </template>
 
 <script type="text/ecmascript-6">
-// import footNav from '../foot-nav/foot-nav'
+import { getKuaiList } from '../api/home'
 
 export default {
-
+  created () {
+    this._getKuaiList()
+  },
+  methods: {
+    _getKuaiList () {
+      getKuaiList().then((res) => {
+        console.log(res)
+      })
+    }
+  }
 }
 </script>
 
@@ -41,7 +50,7 @@ export default {
       text-align: center;
       .tab-link {
         padding-bottom: 0.05rem;
-        color:black;
+        color: black;
         font-size: 0.24rem;
       }
       &.router-link-active {
