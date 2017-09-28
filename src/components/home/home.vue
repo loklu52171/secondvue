@@ -5,7 +5,17 @@
     </div>
     <div class="tab-list">
       <div class="tab-listOne" v-if="currentIndex===0">
-        1111
+        <div v-if="sliderData.length" class="slider-wrapper">
+          <div class="slider-content">
+            <slider ref="slider">
+              <div v-for="item in sliderData">
+                <a :href="item.linkUrl">
+                  <img class="needsclick" @load="loadImage" :src="item.picUrl">
+                </a>
+              </div>
+            </slider>
+          </div>
+        </div>
       </div>
       <div class="tab-listSecond" v-if="currentIndex===1">
         2222
@@ -25,6 +35,7 @@
 
 <script type="text/ecmascript-6">
 import SWitches from 'src/base/switches/switches'
+import Slider from 'src/base/slider/slider'
 import { ERR_OK } from 'src/components/api/config'
 import { getSliderData } from 'src/components/api/home'
 
@@ -66,7 +77,8 @@ export default {
     }
   },
   components: {
-    SWitches
+    SWitches,
+    Slider
   }
 }
 </script>
@@ -93,10 +105,38 @@ export default {
   }
   .tab-list{
     min-height: 0.01rem;
-    .tab-listOne,.tab-listSecond,.tab-listThree,.tab-listFour{
+    .tab-listOne{
+      height: 100%;
+      overflow: hidden;
+      .slider-wrapper{
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-top: 40%;
+        overflow: hidden;
+        .slider-content{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .tab-listSecond{
+      font-size: 0.2rem;
+      color: green;
+    }
+    .tab-listThree{
+      font-size: 0.2rem;
+      color: green;
+    }
+    .tab-listFour{
       font-size: 0.2rem;
       color: green;
     }
   }
 }
 </style>
+
+
