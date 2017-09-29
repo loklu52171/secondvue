@@ -5,11 +5,9 @@
         <li class="item" v-for="(item,index) in topList">
             <img :src="item.picUrl"/>
             <h4>{{index}}</h4>
-
         </li>
       </ul>
     </scroll>
-    <router-view></router-view>
   </div>
 </template>
 

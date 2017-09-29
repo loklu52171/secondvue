@@ -4,157 +4,54 @@
       <s-witches :switches="switches" :currentIndex="currentIndex" @switch="switchItem"></s-witches>
     </div>
     <div class="tab-list">
-      <scroll class="listOne" v-if="currentIndex===0" :data="DiscListData" ref="scrolls">
-        <div>
-          <div v-if="sliderData.length" class="slider-wrapper">
-            <div class="slider-content">
-              <slider ref="slider">
-                <div v-for="item in sliderData">
-                  <a :href="item.linkUrl">
-                    <img @load="loadImage" :src="item.picUrl">
-                  </a>
-                </div>
-              </slider>
+      <keep-alive>
+        <scroll class="listOne" v-if="currentIndex===0" :data="DiscListData" ref="scroll">
+          <div>
+            <div v-if="sliderData.length" class="slider-wrapper">
+              <div class="slider-content">
+                <slider ref="slider">
+                  <div v-for="item in sliderData">
+                    <a :href="item.linkUrl">
+                      <img @load="loadImage" :src="item.picUrl">
+                    </a>
+                  </div>
+                </slider>
+              </div>
+            </div>
+            <div class="discList-wrapper">
+              <h1 class="list-title">热门歌曲推荐</h1>
+              <ul>
+                <li class="disc-list" v-for="item in DiscListData">
+                  <div class="list_left">
+                    <img :src="item.imgurl" alt="">
+                  </div>
+                  <div class="list_right">
+                    <h2 class="list_right_title" v-html="item.dissname"></h2>
+                    <p class="list_right_text" v-html="item.creator.name"></p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="discList-wrapper">
-            <h1 class="list-title">热门歌曲推荐</h1>
-            <ul>
-              <li class="disc-list" v-for="item in DiscListData">
-                <div class="list_left">
-                  <img :src="item.imgurl" alt="">
-                </div>
-                <div class="list_right">
-                  <h2 class="list_right_title" v-html="item.dissname"></h2>
-                  <p class="list_right_text" v-html="item.creator.name"></p>
-                </div>
-              </li>
-            </ul>
+        </scroll>
+      </keep-alive>
+      <keep-alive>
+        <scroll class="listSecond" v-if="currentIndex===1">
+          <div>
+            <p>111</p>
           </div>
+        </scroll>
+      </keep-alive>
+      <keep-alive>
+        <div class="listThree" v-if="currentIndex===2">
+          3333
         </div>
-      </scroll>
-      <scroll class="listSecond" v-if="currentIndex===1">
-        <div>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>rrrrrrrrrrrrrrrrrrr</p>
-          <p>111</p>
-          <p>111</p>
-          <p>qqqqqqqqqqq</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>11f1</p>
-          <p>ffffffffccccccccccccccc</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>dddddddddddddddddddddd</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>fccccccccccceeeeeeeeeeeeeeeee</p>
-          <p>111</p>
-          <p>111</p>
-          <p>jjjjjjjjjjjjjjjjjjjjj</p>
-          <p>111</p>
-          <p>111</p>
-          <p>llllllllllllllll</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>ffffffffffffffff</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>ddddddddddd</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>4444ds</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>dsadasda</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>222</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>1311</p>
-          <p>111</p>
-          <p>11331</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
-          <p>111</p>
+      </keep-alive>
+      <keep-alive>
+        <div class="listFour" v-if="currentIndex===3">
+          4444
         </div>
-      </scroll>
-      <div class="listThree" v-if="currentIndex===2">
-        3333
-      </div>
-      <div class="listFour" v-if="currentIndex===3">
-        4444
-      </div>
-
+      </keep-alive>
     </div>
     <keep-alive>
       <router-view></router-view>
@@ -206,7 +103,8 @@ export default {
       if (!this.checkloaded) {
         this.checkloaded = true
         setTimeout(() => {
-          this.$refs.scrolls.refresh()
+          this.$refs.scroll.refresh()
+          console.log('jjj')
         }, 20)
       }
     },
@@ -244,6 +142,10 @@ export default {
     }
   }
   .tab-list {
+    position: fixed;
+    width: 100%;
+    top: 1.6rem;
+    bottom: 0;
     .listOne {
       height: 100%;
       overflow: hidden;

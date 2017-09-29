@@ -1,7 +1,6 @@
 <template>
   <div ref="wrapper">
-    <slot>
-    </slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -19,7 +18,7 @@
       },
       click: {
         type: Boolean,
-        default: true
+        default: false
       },
       listenScroll: {
         type: Boolean,
