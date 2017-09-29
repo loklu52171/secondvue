@@ -4,42 +4,157 @@
       <s-witches :switches="switches" :currentIndex="currentIndex" @switch="switchItem"></s-witches>
     </div>
     <div class="tab-list">
-      <div class="tab-listOne" v-if="currentIndex===0">
-        <div v-if="sliderData.length" class="slider-wrapper">
-          <div class="slider-content">
-            <slider ref="slider">
-              <div v-for="item in sliderData">
-                <a :href="item.linkUrl">
-                  <img class="needsclick" @load="loadImage" :src="item.picUrl">
-                </a>
-              </div>
-            </slider>
+      <scroll class="listOne" v-if="currentIndex===0" :data="DiscListData" ref="scrolls">
+        <div>
+          <div v-if="sliderData.length" class="slider-wrapper">
+            <div class="slider-content">
+              <slider ref="slider">
+                <div v-for="item in sliderData">
+                  <a :href="item.linkUrl">
+                    <img @load="loadImage" :src="item.picUrl">
+                  </a>
+                </div>
+              </slider>
+            </div>
+          </div>
+          <div class="discList-wrapper">
+            <h1 class="list-title">热门歌曲推荐</h1>
+            <ul>
+              <li class="disc-list" v-for="item in DiscListData">
+                <div class="list_left">
+                  <img :src="item.imgurl" alt="">
+                </div>
+                <div class="list_right">
+                  <h2 class="list_right_title" v-html="item.dissname"></h2>
+                  <p class="list_right_text" v-html="item.creator.name"></p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="discList-wrapper">
-          <h1 class="list-title">热门歌曲推荐</h1>
-          <ul>
-            <li class="disc-list" v-for="item in DiscListData">
-              <div class="list_left">
-                <img :src="item.imgurl" alt="">
-              </div>
-              <div class="list_right">
-                <h2 class="list_right_title" v-html="item.dissname"></h2>
-                <p class="list_right_text" v-html="item.creator.name"></p>
-              </div>
-            </li>
-          </ul>
+      </scroll>
+      <scroll class="listSecond" v-if="currentIndex===1">
+        <div>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>rrrrrrrrrrrrrrrrrrr</p>
+          <p>111</p>
+          <p>111</p>
+          <p>qqqqqqqqqqq</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>11f1</p>
+          <p>ffffffffccccccccccccccc</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>dddddddddddddddddddddd</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>fccccccccccceeeeeeeeeeeeeeeee</p>
+          <p>111</p>
+          <p>111</p>
+          <p>jjjjjjjjjjjjjjjjjjjjj</p>
+          <p>111</p>
+          <p>111</p>
+          <p>llllllllllllllll</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>ffffffffffffffff</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>ddddddddddd</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>4444ds</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>dsadasda</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>222</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>1311</p>
+          <p>111</p>
+          <p>11331</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
+          <p>111</p>
         </div>
-      </div>
-      <div class="tab-listSecond" v-if="currentIndex===1">
-        2222
-      </div>
-      <div class="tab-listThree" v-if="currentIndex===2">
+      </scroll>
+      <div class="listThree" v-if="currentIndex===2">
         3333
       </div>
-      <div class="tab-listFour" v-if="currentIndex===3">
+      <div class="listFour" v-if="currentIndex===3">
         4444
       </div>
+
     </div>
     <keep-alive>
       <router-view></router-view>
@@ -50,6 +165,7 @@
 <script type="text/ecmascript-6">
 import SWitches from 'src/base/switches/switches'
 import Slider from 'src/base/slider/slider'
+import Scroll from 'src/base/scroll/scroll'
 import { ERR_OK } from 'src/components/api/config'
 import { getSliderData, getDiscList } from 'src/components/api/home'
 
@@ -90,7 +206,7 @@ export default {
       if (!this.checkloaded) {
         this.checkloaded = true
         setTimeout(() => {
-          this.$refs.scroll.refresh()
+          this.$refs.scrolls.refresh()
         }, 20)
       }
     },
@@ -100,7 +216,8 @@ export default {
   },
   components: {
     SWitches,
-    Slider
+    Slider,
+    Scroll
   }
 }
 </script>
@@ -127,8 +244,7 @@ export default {
     }
   }
   .tab-list {
-    min-height: 0.01rem;
-    .tab-listOne {
+    .listOne {
       height: 100%;
       overflow: hidden;
       .slider-wrapper {
@@ -145,8 +261,8 @@ export default {
           height: 100%;
         }
       }
-      .discList-wrapper{
-        .list-title{
+      .discList-wrapper {
+        .list-title {
           margin-bottom: 0.2rem;
           background-color: #eee;
           font-size: 0.24rem;
@@ -155,40 +271,40 @@ export default {
           letter-spacing: 0.08rem;
           text-align: center;
         }
-        .disc-list{
+        .disc-list {
           display: flex;
           align-items: center;
           padding: 0 0 0 0.4rem;
           box-sizing: border-box;
-          .list_left{
+          .list_left {
             margin-right: 0.24rem;
-            img{
+            img {
               width: 0.9rem;
               height: 0.9rem;
             }
           }
-          .list_right{
+          .list_right {
             display: flex;
             flex-direction: column;
-            .list_right_title{
+            .list_right_title {
               font-size: 0.2rem;
             }
-            .list_right_text{
+            .list_right_text {
               font-size: 0.2rem;
             }
           }
         }
       }
     }
-    .tab-listSecond {
+    .listSecond {
       font-size: 0.2rem;
       color: green;
     }
-    .tab-listThree {
+    .listThree {
       font-size: 0.2rem;
       color: green;
     }
-    .tab-listFour {
+    .listFour {
       font-size: 0.2rem;
       color: green;
     }
