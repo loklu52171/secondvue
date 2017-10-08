@@ -21,7 +21,7 @@
             <div class="discList-wrapper">
               <h1 class="list-title">热门歌曲推荐</h1>
               <ul>
-                <li class="disc-list" v-for="item in DiscListData">
+                <li @click="selectItem(item)" class="disc-list" v-for="item in DiscListData">
                   <div class="list_left">
                     <img v-lazy="item.imgurl" alt="">
                   </div>
@@ -39,9 +39,25 @@
         </scroll>
       </keep-alive>
       <keep-alive>
-        <scroll class="listSecond" v-if="currentIndex===1">
+        <scroll class="listSecond" v-if="currentIndex===1" :data="DiscListData" ref="scroll">
           <div>
-            <p>222222222222222</p>
+            <div class="discList-wrapper">
+              <h1 class="list-title">热门消息</h1>
+              <ul>
+                <li class="disc-list" v-for="item in DiscListData">
+                  <div class="list_left">
+                    <img v-lazy="item.imgurl" alt="">
+                  </div>
+                  <div class="list_right">
+                    <h2 class="list_right_title" v-html="item.dissname"></h2>
+                    <p class="list_right_text" v-html="item.creator.name"></p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="loading-container" v-show="!DiscListData.length">
+            <loading></loading>
           </div>
         </scroll>
       </keep-alive>
@@ -85,6 +101,8 @@ export default {
     this._getDiscList()
   },
   methods: {
+    selectItem(singer) {
+    },
     _getSliderData() {
       getSliderData().then((res) => {
         if (res.code === ERR_OK) {
@@ -104,7 +122,6 @@ export default {
         this.checkloaded = true
         setTimeout(() => {
           this.$refs.scroll.refresh()
-          console.log('jjj')
         }, 20)
       }
     },
@@ -149,10 +166,10 @@ export default {
     bottom: 0;
     .listOne {
       .loading-container {
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      transform: translateY(-50%);
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
       }
       height: 100%;
       overflow: hidden;
@@ -206,8 +223,42 @@ export default {
       }
     }
     .listSecond {
-      font-size: 0.2rem;
-      color: green;
+      height: 100%;
+      overflow: hidden;
+      .discList-wrapper {
+        .list-title {
+          margin-bottom: 0.2rem;
+          background-color: #eee;
+          font-size: 0.24rem;
+          height: 0.7rem;
+          line-height: 0.7rem;
+          letter-spacing: 0.08rem;
+          text-align: center;
+        }
+        .disc-list {
+          display: flex;
+          align-items: center;
+          padding: 0 0 0 0.4rem;
+          box-sizing: border-box;
+          .list_left {
+            margin-right: 0.24rem;
+            img {
+              width: 0.9rem;
+              height: 0.9rem;
+            }
+          }
+          .list_right {
+            display: flex;
+            flex-direction: column;
+            .list_right_title {
+              font-size: 0.2rem;
+            }
+            .list_right_text {
+              font-size: 0.2rem;
+            }
+          }
+        }
+      }
     }
     .listThree {
       font-size: 0.2rem;
