@@ -23,7 +23,7 @@
               <ul>
                 <li class="disc-list" v-for="item in DiscListData">
                   <div class="list_left">
-                    <img :src="item.imgurl" alt="">
+                    <img v-lazy="item.imgurl" alt="">
                   </div>
                   <div class="list_right">
                     <h2 class="list_right_title" v-html="item.dissname"></h2>
@@ -33,25 +33,24 @@
               </ul>
             </div>
           </div>
+          <div class="loading-container" v-show="!DiscListData.length">
+            <loading></loading>
+          </div>
         </scroll>
       </keep-alive>
       <keep-alive>
         <scroll class="listSecond" v-if="currentIndex===1">
           <div>
-            <p>111</p>
+            <p>222222222222222</p>
           </div>
         </scroll>
       </keep-alive>
-      <keep-alive>
-        <div class="listThree" v-if="currentIndex===2">
-          3333
-        </div>
-      </keep-alive>
-      <keep-alive>
-        <div class="listFour" v-if="currentIndex===3">
-          4444
-        </div>
-      </keep-alive>
+      <div class="listThree" v-if="currentIndex===2">
+        3333
+      </div>
+      <div class="listFour" v-if="currentIndex===3">
+        4444
+      </div>
     </div>
     <keep-alive>
       <router-view></router-view>
@@ -62,6 +61,7 @@
 <script type="text/ecmascript-6">
 import SWitches from 'src/base/switches/switches'
 import Slider from 'src/base/slider/slider'
+import Loading from 'src/base/loading/loading'
 import Scroll from 'src/base/scroll/scroll'
 import { ERR_OK } from 'src/components/api/config'
 import { getSliderData, getDiscList } from 'src/components/api/home'
@@ -115,7 +115,8 @@ export default {
   components: {
     SWitches,
     Slider,
-    Scroll
+    Scroll,
+    Loading
   }
 }
 </script>
@@ -147,6 +148,12 @@ export default {
     top: 1.6rem;
     bottom: 0;
     .listOne {
+      .loading-container {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      }
       height: 100%;
       overflow: hidden;
       .slider-wrapper {
