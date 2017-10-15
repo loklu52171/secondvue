@@ -19,7 +19,7 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '/:dissid',
+          path: ':dissid',
           component: Homedetail
         }
       ]

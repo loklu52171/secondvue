@@ -102,6 +102,9 @@ export default {
   },
   methods: {
     selectItem(singer) {
+      this.$router.push({
+        path: `/home/${singer.dissid}`
+      })
     },
     _getSliderData() {
       getSliderData().then((res) => {
