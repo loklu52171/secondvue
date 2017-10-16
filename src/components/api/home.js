@@ -2,7 +2,7 @@ import jsonp from 'src/style/js/jsonp'
 import { commonParams, options } from './config'
 import axios from 'axios'
 
-export function getSliderData () { // 获取轮播图数据
+export function getSliderData() { // 获取轮播图数据
   const url = 'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'
 
   const data = Object.assign({}, commonParams, {
@@ -35,19 +35,26 @@ export function getDiscList() {
   })
 }
 
-// export function getKuaiList () {
-//   const url = 'https://restapi.ele.me/shopping/v2/entries'
+export function getSongList(dissid) {
+  const url = 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
 
-//   const data = Object.assign({}, {
-//     latitude: 28.227779,
-//     longitude: 112.938858,
-//     limit: 20
-//   })
+  const data = Object.assign({}, commonParams, {
+    g_tk: 5381,
+    format: 'json',
+    inCharset: 'utf-8',
+    outCharset: 'utf-8',
+    notice: 0,
+    platform: 'h5',
+    needNewCode: 1,
+    new_format: 1,
+    pic: 500,
+    disstid: dissid,
+    type: 1,
+    json: 1,
+    utf8: 1,
+    onlysong: 0,
+    nosign: 1
+  })
 
-//   return axios.get(url, {
-//     params: data
-//   }).then((res) => {
-//     return Promise.resolve(res.data)
-//   })
-// }
-
+  return jsonp(url, data, options)
+}

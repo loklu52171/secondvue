@@ -81,6 +81,7 @@ import Loading from 'src/base/loading/loading'
 import Scroll from 'src/base/scroll/scroll'
 import { ERR_OK } from 'src/components/api/config'
 import { getSliderData, getDiscList } from 'src/components/api/home'
+import { mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -101,10 +102,11 @@ export default {
     this._getDiscList()
   },
   methods: {
-    selectItem(singer) {
+    selectItem(song) {
       this.$router.push({
-        path: `/home/${singer.dissid}`
+        path: `/home/${song.dissid}`
       })
+      this.setDisc(song)
     },
     _getSliderData() {
       getSliderData().then((res) => {
@@ -130,7 +132,10 @@ export default {
     },
     switchItem(index) {
       this.currentIndex = index
-    }
+    },
+    ...mapMutations({
+      setDisc: 'SET_DISC'
+    })
   },
   components: {
     SWitches,
