@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/home/home'
-import Homedetail from '../components/home-detail/home-detail'
+import HomeDetail from '../components/home-detail/home-detail'
 import Shop from '../components/shop/shop'
 import Discount from '../components/discount/discount'
+import DiscountDetail from '../components/discount-detail/discount-detail'
 import Personal from '../components/personal/personal'
 
 Vue.use(Router)
@@ -20,7 +21,7 @@ export default new Router({
       children: [
         {
           path: ':dissid',
-          component: Homedetail
+          component: HomeDetail
         }
       ]
     },
@@ -30,7 +31,13 @@ export default new Router({
     },
     {
       path: '/discount',
-      component: Discount
+      component: Discount,
+      children: [
+        {
+          path: ':id',
+          component: DiscountDetail
+        }
+      ]
     },
     {
       path: '/personal',

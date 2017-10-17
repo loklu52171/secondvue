@@ -27,7 +27,7 @@ export default {
   methods: {
     selectSinger(singer) {
       this.$router.push({
-        path: `/singer/${singer.id}`
+        path: `/discount/${singer.id}`
       })
       this.setSinger(singer)
     },
@@ -96,6 +96,7 @@ export default {
     top: 0.9rem;
     bottom: 0;
     width: 100%;
+    height: 100%;
   }
     
 </style>

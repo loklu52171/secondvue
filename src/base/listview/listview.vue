@@ -63,7 +63,7 @@ export default {
     }
   },
   created() {
-    this.probeType = 3
+    this.probeType = 1 // 我自己吧3修改成1的
     this.listenScroll = true
     this.touch = {}
     this.listHeight = []
