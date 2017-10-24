@@ -32,7 +32,7 @@ import Loading from 'src/base/loading/loading'
 import { getData } from 'src/style/js/dom'
 
 const TITLE_HEIGHT = 30
-const ANCHOR_HEIGHT = 18
+const ANCHOR_HEIGHT = 29 // 每个li的高度，应该是的
 
 export default {
   props: {
@@ -234,8 +234,8 @@ export default {
     .loading-container {
         position: absolute;
         width: 100%;
-        top: 40%;
-        transform: translateY(-40%);
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 </style>
