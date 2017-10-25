@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container" v-show="$route.meta.navShow">
     <div class="tab">
-      <router-link tag="div" class="tab-item" to="/home">
+      <router-link tag="div" class="tab-item" to="/home" exact>
         <i class="tab-i iconfont icon-shouye"></i>
         <span class="tab-link">首页</span>
       </router-link>
@@ -22,7 +22,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-export default {}
+export default {
+
+}
 </script>
 
 <style scoped lang="scss">
@@ -48,12 +50,12 @@ export default {}
       }
       .tab-link {
         padding-bottom: 0.05rem;
-        color: yellow;
+        color: #666;
         font-size: 0.2rem;
       }
       &.router-link-active {
-        .tab-link {
-          color: red;
+        .tab-link,.tab-i {
+          color: #D0021B;
         }
       }
     }

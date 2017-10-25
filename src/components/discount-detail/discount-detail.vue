@@ -1,14 +1,14 @@
 <template>
   <transition name="slide">
-   <div class="div2">111</div>
+   <div class="div2">222|</div>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
 export default {}
-</script>
+</script>|
 
-<style scoped lang="scss">
+<style lang="scss">
 .div2 {
   position: fixed;
   z-index: 999;

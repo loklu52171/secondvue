@@ -18,30 +18,36 @@ export default new Router({
     {
       path: '/home',
       component: Home,
+      meta: { navShow: true },
       children: [
         {
           path: ':dissid',
-          component: HomeDetail
+          component: HomeDetail,
+          meta: { navShow: false }
         }
       ]
     },
     {
       path: '/shop',
-      component: Shop
+      component: Shop,
+      meta: { navShow: true }
     },
     {
       path: '/discount',
       component: Discount,
+      meta: { navShow: true },
       children: [
         {
           path: ':id',
-          component: DiscountDetail
+          component: DiscountDetail,
+          meta: { navShow: false }
         }
       ]
     },
     {
       path: '/personal',
-      component: Personal
+      component: Personal,
+      meta: { navShow: true }
     }
   ]
 })
